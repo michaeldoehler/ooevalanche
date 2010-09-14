@@ -4,27 +4,13 @@
  * and open the template in the editor.
  */
 
-class EVALANCHE_Pool
+class EVALANCHE_Pool extends EVALANCHE_Object
 {
-    private $_evalanche;
-    private $_id;
     private $_name;
     private $_comment;
     private $_url;
     private $_admin_url;
     private $_attributes = false;
-
-    public function __construct(EVALANCHE $evalanche, $poolId)
-    {
-        $this->_evalanche = $evalanche;
-        $this->_id = $poolId;
-    }
-
-    private function apiCall($method, $args = array())
-    {
-        $arglist = array_merge(array($this->_id), $args);
-        return $this->_evalanche->apiCall($method, $arglist);
-    }
 
     public function setData($data)
     {
