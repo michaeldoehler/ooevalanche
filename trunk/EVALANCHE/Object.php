@@ -45,7 +45,6 @@ class EVALANCHE_Object
             $ikey = '_'.$key;
             if (in_array($key, $this->_dataFields)) {
                 $this->$ikey = $value;
-                //Zend_Debug::dump(in_array($key, $this->_dataFields));
             }
         }
         return $this;
