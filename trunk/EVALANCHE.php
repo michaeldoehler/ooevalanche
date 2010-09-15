@@ -10,6 +10,19 @@ class EVALANCHE
     private $_cred;
     private $_server;
 
+    private static $_cache;
+
+
+    public static function setCache($cache)
+    {
+        self::$_cache = $cache;
+    }
+
+    public static function getCache()
+    {
+        return self::$_cache;
+    }
+
     public function  __construct($username, $password, $host='http://scnem.com') {
         $this->_host = $host;
         $this->_cred = array('username' => $username, 'password' => $password);
@@ -20,18 +33,17 @@ class EVALANCHE
     {
         $arglist = array_merge(array($this->_cred), $args);
         return $this->_server->call($method, $arglist);
-        
     }
-
-    public function isAlive()
-    {
-        return $this->apiCall('isAlive');
-    }
-    
-    public function getMandator($mandatorId = 0)
-    {
-        return new EVALANCHE_Mandator($this, $mandatorId);
-    }
+}
 
 
+
+class EVALANCHE_MethodSignature
+{
+    private $_name;
+    private $_authRequired;
+    private $_parentClass;
+    private $_responseClass;
+    private $_responseListClass;
+    private $_evalanche;
 }
